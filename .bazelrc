@@ -270,5 +270,12 @@ build:windows --features=fully_static_link
 build:windows --features=static_link_msvcrt
 build:windows --dynamic_mode=off
 
+# Use our custom-configured c++ toolchain.
+build:cross_aarch64 --crosstool_top=//bazel/aarch64_toolchain:aarch64
+# Use --cpu as a differentiator.
+build:cross_aarch64 --cpu=aarch64
+# Use the default Bazel C++ toolchain to build the tools used during the build.
+build:cross_aarch64 --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+
 try-import %workspace%/clang.bazelrc
 try-import %workspace%/user.bazelrc
