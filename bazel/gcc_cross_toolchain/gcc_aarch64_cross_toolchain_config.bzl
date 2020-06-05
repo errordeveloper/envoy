@@ -110,7 +110,7 @@ def _impl(ctx):
         tool_paths = tool_paths,
     )
 
-cc_toolchain_config = rule(
+gcc_aarch64_cross_toolchain_config_rule = rule(
     implementation = _impl,
     attrs = {},
     provides = [CcToolchainConfigInfo],
